@@ -1,10 +1,10 @@
 # Zkuiz: batas stack dan kontrak komponen
 
-Tanggal pemeriksaan: **29 Oktober 2026**. Riset dokumentasi resmi melalui Context7 dan pembacaan sumber primer. Tidak ada instalasi, implementasi, benchmark, atau pemeriksaan browser/LeetCode. Dokumentasi bergerak tidak menetapkan versi paket proyek.
+Tanggal pemeriksaan: **29 Oktober 2026**. Catatan ini membahas dokumentasi resmi dan sumber primer. Rekomendasi belum diuji melalui implementasi atau benchmark; versi paket proyek belum dipatok.
 
 ## Keputusan terkonfirmasi dan usulan
 
-**Terkonfirmasi dari instruksi pengguna:** Zkuiz adalah platform latihan soal arithmetic circuit ZK; stack dipilih **Next.js, Bun, shadcn/ui**. Komponen harus modular dan dapat dikomposisikan seperti shadcn. Tahap saat ini riset dahulu.
+**Arah proyek:** Zkuiz menggunakan **Next.js, Bun, dan shadcn/ui** untuk platform latihan arithmetic circuit ZK. Komponen memiliki tanggung jawab yang jelas dan dapat dikomposisikan. Implementasi aplikasi belum dimulai pada saat penelitian ini dilakukan.
 
 **Usulan arsitektur:** Next.js menangani UI dan API aplikasi; pekerjaan judge berjalan asinkron di worker terpisah dengan lingkungan eksekusi terisolasi. Monaco adalah kandidat editor; xterm.js hanya diperlukan bila ada kebutuhan terminal interaktif. Bahasa circuit, compiler, mekanisme sandbox, penyimpanan, antrean, dan penyedia deployment belum dipilih.
 

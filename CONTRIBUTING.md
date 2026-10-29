@@ -1,84 +1,56 @@
-# Development workflow
+# Contributing to Zkuiz
 
-Zkuiz uses Next.js, Bun, and shadcn/ui. The current repository contains project setup; application code, test commands, and CI will be established by the first implementation PR.
+Zkuiz is in early development. Useful contributions include circuit exercises, adversarial test cases, verification research, and documentation improvements.
 
-## Branch model
+For a substantial change, open an issue first to discuss the problem and proposed approach. Small corrections can go directly to a pull request. Please follow the [code of conduct](CODE_OF_CONDUCT.md).
 
-`main` is the stable integration branch. Each change uses a short-lived branch with one purpose:
+## Getting started
 
-- `feat/<behavior>` for a feature.
-- `fix/<bug>` for a correction.
-- `refactor/<scope>`, `test/<scope>`, `docs/<topic>`, or `chore/<setup>` for other changes.
-
-Start independent work from an up-to-date `main` in a clean checkout. Do not discard or stash another contributor's work to make the checkout clean.
+Fork the repository, clone your fork, and create a branch for your change:
 
 ```sh
-git switch main
-git pull --ff-only
-git switch -c feat/<behavior>
+git clone https://github.com/YOUR-USERNAME/zkuiz.git
+cd zkuiz
+git switch -c feat/describe-your-change
 ```
 
-Keep PRs focused enough to review in one sitting. Split unrelated setup, research, and product behavior. Do not use an arbitrary line limit that separates a change from the tests it needs.
+The application, test harness, and CI have not been added yet. There are no installation or development-server commands to run. The planned stack is Next.js, Bun, and shadcn/ui; setup instructions will accompany the application code.
 
-Use stacked PRs only for dependent changes. State the parent and base in each description, keep each layer independently understandable, and retarget dependent PRs after their parent merges. Independent branches should both target `main`.
+## Scope
 
-## Test-first implementation
+Keep each pull request focused on one problem. Include the tests and documentation needed to understand the change, and separate unrelated improvements into their own PRs.
 
-For every feature or bug fix:
+For circuit exercises or checking methods, describe the input domain, expected constraints, and cases that should be rejected. Distinguish test coverage from formal guarantees, and cite sources for research claims.
 
-1. Define the observable acceptance conditions.
-2. Add the smallest meaningful failing test and run it. Verify the failure is due to the missing behavior.
-3. Implement enough to pass, then refactor with tests still passing.
-4. Run focused project checks and inspect the final diff.
-5. Include the actual Red and Green commands and their results in the PR.
+When application work begins, compose UI from small components with clear responsibilities. Keep presentation separate from API requests and job orchestration.
 
-Choose the test level according to the behavior: unit tests for isolated rules, integration tests for boundaries, and interaction tests for user flows. Do not invent a test to satisfy a checkbox or claim an unobserved failure.
+## Tests and verification
 
-Documentation, metadata, and purely visual changes may use targeted non-test checks with a stated reason. Before the first application-code PR is ready, establish the project test harness and relevant CI checks. Test and CI commands are intentionally not prescribed before those tools exist.
+Use test-driven development for features and bug fixes:
 
-## Feature verification
+1. Write a test that captures the expected behavior and confirm it fails for the intended reason.
+2. Implement the change and confirm the test passes.
+3. Refactor as needed, then rerun the relevant checks.
 
-Apply the installed `freebuff-verifier` workflow for every feature and behavior-changing fix. Inspect correctness, edge cases, and unintended edits; run the checks that cover the changed behavior; exercise user-facing changes when practical. Resolve introduced failures before handoff.
+Include the commands and results in the PR. Review the final diff for edge cases and unintended changes. For UI changes, describe the interactions you checked.
 
-Use additional reviewers or broader checks when the risk warrants them. In particular, authentication, untrusted-code execution, worker isolation, and judge correctness need evidence at the affected boundary. A separate reviewer and full suite are not mandatory for every change.
+Documentation-only changes do not require an executable regression test. Check links, examples, and factual accuracy instead. If a required check cannot run, explain the limitation and keep the PR in draft.
 
-If the skill is unavailable, state that and perform the equivalent checks manually. If checks cannot run, document the blocker and keep the PR draft.
+The first application-code contribution must establish a runnable test harness and CI checks. Subsequent contributions should use the commands documented by the project.
 
-## Pull requests and merge
+## Pull requests
 
-- Open a PR for each focused change. Use a Conventional Commit title such as `feat: run a circuit against example inputs`.
-- Describe the problem, resulting behavior, validation evidence, and material limits. Complete the PR template honestly.
-- Keep draft PRs for incomplete work or blocked verification. Otherwise mark the change ready for user review.
-- Agents do not merge or enable auto-merge without explicit user instruction.
-- Use squash merge. GitHub deletes the merged branch automatically. Preserve review conversations and resolve them before merge.
-- Do not rewrite a published branch while someone is reviewing it without coordinating first. Never force-push `main`.
+- Branch from the current `main`. Use a descriptive name such as `feat/range-check-exercise`, `fix/testcase-parser`, or `docs/circuit-verification`.
+- Explain the problem, the change, and how you verified it. Link related issues and note any dependent PRs.
+- Use a Conventional Commit title, such as `docs: clarify circuit verification limits`.
+- Keep incomplete work in draft. Address review feedback before requesting another review.
 
-Repository settings require PRs, resolved conversations, and linear history on `main`, and prohibit force-pushes and branch deletion there. Required approvals are currently zero because agent PRs use the repository owner's GitHub identity, and GitHub does not allow authors to approve their own PR. The owner reviews and merges manually; this setup does not pretend to enforce an independent approval.
+Maintainers review and squash-merge changes into `main`. Do not rewrite a branch under active review without coordinating with the reviewers.
 
-No required CI status checks are configured yet. Add the actual checks with the first test harness rather than referencing nonexistent jobs.
+## Security reports
 
-## Local Codebase Memory setup
+Do not disclose vulnerabilities in public issues. Follow [SECURITY.md](SECURITY.md) to submit a private report.
 
-Codebase Memory MCP is available in the current development environment. The installed CLI supports indexing an absolute path:
+## License
 
-```sh
-codebase-memory-mcp cli index_repository --repo-path /absolute/path/to/zkuiz
-```
-
-The default database cache is `~/.cache/codebase-memory-mcp/`, outside Git. Do not relocate it into the project or change account-wide cache settings merely for this repository.
-
-For local artifacts and machine-specific configuration, add rules to `.git/info/exclude`. This file belongs to the local Git metadata and is never committed. For example:
-
-```gitignore
-/.cbmignore
-/.mcp.json
-/.codebase-memory/
-/.codebase-memory-mcp/
-/.playwright-mcp/
-```
-
-`.cbmignore` controls indexing exclusions and can itself be excluded locally. Put generated folders such as `.playwright-mcp/`, `node_modules/`, `.next/`, and `coverage/` there when needed. A Git exclusion does not necessarily imply an index exclusion.
-
-Confirm a local artifact is ignored with `git check-ignore -v <path>` and confirm it is absent from `git ls-files`. Check `index_status` and `check_index_coverage` for index state and coverage. A documentation-only repository does not yet provide a meaningful application call graph.
-
-Sources: [Codebase Memory documentation](https://github.com/DeusData/codebase-memory-mcp), [GitHub local ignore rules](https://docs.github.com/en/get-started/git-basics/ignoring-files).
+Contributions are accepted under the project's [MIT license](LICENSE).

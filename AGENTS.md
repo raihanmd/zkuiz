@@ -5,6 +5,7 @@
 - Build a practice platform for zero-knowledge arithmetic circuits. LeetCode is the primary interaction reference; Zkuiz has its own visual identity.
 - Use Next.js, Bun, and shadcn/ui. The application and test harness have not been scaffolded yet; do not claim existing package commands or CI gates.
 - Use composable components. Keep UI primitives in `components/ui`, domain components in their feature, and API/job orchestration outside presentation components. Extract abstractions when there is a real shared responsibility.
+- Write public documentation for human readers. Keep README and contribution guidance concise and professional; put agent skills, MCP setup, and session-specific workflow details in this file rather than public onboarding. Do not describe planned features as available.
 - For UI work, apply the installed `mba-design-rules` and the relevant MBA build skill. Use `quiet-signal-design` for the default personal engineering style unless an explicit brief overrides it.
 
 ## Branches and review

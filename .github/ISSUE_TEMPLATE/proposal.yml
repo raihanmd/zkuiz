@@ -1,0 +1,18 @@
+name: Proposal
+description: Suggest an exercise, research topic, or project improvement.
+title: "proposal: "
+body:
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Problem or learning goal
+      description: What should this contribution help someone understand or do?
+    validations:
+      required: true
+  - type: textarea
+    id: approach
+    attributes:
+      label: Proposed approach
+      description: Outline the scope, useful examples, and any relevant sources.
+    validations:
+      required: true
