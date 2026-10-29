@@ -1,0 +1,172 @@
+{
+  "bundleSources": [
+    {
+      "characters": 381662,
+      "url": "https://leetcode.com/_next/static/chunks/pages/_app-e927d51b1021e479.js"
+    },
+    {
+      "characters": 41125,
+      "url": "https://leetcode.com/_next/static/chunks/58385-af635e9cd8afd720.js"
+    }
+  ],
+  "date": "2026-10-29",
+  "editor": {
+    "models": [
+      {
+        "language": "cpp",
+        "length": 98
+      },
+      {
+        "language": "plaintext",
+        "length": 0
+      }
+    ],
+    "monaco": true
+  },
+  "interceptedExecutionRequests": 0,
+  "layout": {
+    "children": [
+      {
+        "children": [
+          {
+            "component": "description",
+            "id": "#edcc36d0-7102-4904-0813-992b46a51b9b",
+            "type": "tab"
+          },
+          {
+            "component": "editorial",
+            "id": "#2ebd6bd5-2e41-bac5-1297-613b8122aebe",
+            "type": "tab"
+          },
+          {
+            "component": "solutions",
+            "id": "#ceda3789-aef2-9557-836e-5260e7b2ee02",
+            "type": "tab"
+          },
+          {
+            "component": "submissions",
+            "id": "#9801a910-0b6b-8f99-7aea-533c370bb3af",
+            "type": "tab"
+          }
+        ],
+        "foldBeforeWeight": 54.05,
+        "id": "#2d42380d-65b6-c1aa-5338-b32a8390e59b",
+        "type": "tabset",
+        "weight": 46.79886685552408
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "component": "code",
+                "enableRenderOnDemand": false,
+                "id": "#e2501b5d-4fa9-26e2-4e60-8c918568d8c8",
+                "type": "tab"
+              }
+            ],
+            "foldBeforeWeight": 35,
+            "id": "#358cfa27-0c46-ff8e-9c09-60489ece326e",
+            "type": "tabset",
+            "weight": 46.83453237410072
+          },
+          {
+            "active": true,
+            "children": [
+              {
+                "component": "testcase",
+                "id": "#b21de204-2189-5605-9ea3-7ba4e48aeadf",
+                "type": "tab"
+              },
+              {
+                "component": "result",
+                "id": "#52a4422c-13c2-174a-d6b5-68e108243e08",
+                "type": "tab"
+              }
+            ],
+            "foldBeforeWeight": 35,
+            "id": "#3f34f663-d454-1e4d-9588-6b588d126a67",
+            "selected": 1,
+            "type": "tabset",
+            "weight": 23.165467625899282
+          }
+        ],
+        "id": "#97329f7b-f5c2-4106-e0f2-d9565638ec7e",
+        "type": "row",
+        "weight": 33.20113314447592
+      }
+    ],
+    "id": "#638cda75-e33d-5be9-2ebe-4ae8d92320f9",
+    "type": "row"
+  },
+  "layoutKey": "QD_LAYOUT_JSON",
+  "resultEmptyState": "You must run your code first",
+  "runSubmitGuestNotice": "You need to log in / sign up to run or submit",
+  "scope": "Guest Two Sum problem workspace only; no successful code execution or judge result observed.",
+  "splitters": [
+    {
+      "className": "flexlayout__splitter flexlayout__splitter_vert",
+      "rect": {
+        "bottom": 890,
+        "height": 842,
+        "left": 837,
+        "right": 845,
+        "top": 48,
+        "width": 8,
+        "x": 837,
+        "y": 48
+      }
+    },
+    {
+      "className": "flexlayout__splitter flexlayout__splitter_horz",
+      "rect": {
+        "bottom": 614,
+        "height": 8,
+        "left": 845,
+        "right": 1430,
+        "top": 606,
+        "width": 585,
+        "x": 845,
+        "y": 606
+      }
+    }
+  ],
+  "tabs": [
+    {
+      "label": "Description",
+      "selected": true
+    },
+    {
+      "label": "Editorial",
+      "selected": false
+    },
+    {
+      "label": "Solutions",
+      "selected": false
+    },
+    {
+      "label": "Submissions",
+      "selected": false
+    },
+    {
+      "label": "Code",
+      "selected": true
+    },
+    {
+      "label": "Testcase",
+      "selected": false
+    },
+    {
+      "label": "Test Result",
+      "selected": true
+    }
+  ],
+  "terminalWidgetCount": 0,
+  "title": "Two Sum - LeetCode",
+  "url": "https://leetcode.com/problems/two-sum/",
+  "viewport": {
+    "height": 900,
+    "width": 1440
+  },
+  "executionRequestObservationScope": "Temporary XMLHttpRequest hook only; does not cover fetch or all network traffic. Zero count is not proof that no request was sent."
+}

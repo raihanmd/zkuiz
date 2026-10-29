@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--problem-share:40%;--editor-share:62%}
+*{box-sizing:border-box}body{margin:0;color:var(--foreground,#18181b);font:14px/1.55 var(--font-sans,system-ui,sans-serif)}
+p{margin:0 0 12px}.muted{color:var(--muted-foreground,#62626b)}.caption{font-size:12px}.controls{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+button{min-height:44px;padding:8px 16px;font:inherit;color:inherit;background:transparent;border:1px solid var(--border,#c7c7cc);border-radius:4px;cursor:pointer}
+button[aria-pressed="true"]{color:var(--primary-foreground,#fff);background:var(--primary,#18181b);border-color:var(--primary,#18181b)}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--ring,#5757c2);outline-offset:3px}
+.workspace{display:grid;grid-template-columns:minmax(0,var(--problem-share)) minmax(0,1fr);gap:8px;height:260px}
+.panel{border:1px solid var(--border,#c7c7cc);border-radius:8px;overflow:auto;min-width:0;min-height:0;padding:16px}
+.panel-title{display:block;font-weight:600;margin-bottom:8px}.right{display:grid;grid-template-rows:minmax(0,var(--editor-share)) minmax(0,1fr);gap:8px;min-width:0;min-height:0}
+code{font:12px/1.5 var(--font-mono,ui-monospace,monospace)}.resize-controls{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px}
+label{display:block;font-size:12px}input[type=range]{display:block;width:100%;min-height:44px;accent-color:var(--foreground,#18181b);margin:0}
+.flow{list-style:none;padding:0;margin:16px 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.flow li{padding:12px 0;border-top:2px solid var(--border,#c7c7cc)}.flow strong{display:block;font-size:14px}.flow span{display:block;font-size:12px;color:var(--muted-foreground,#62626b);margin-top:4px}
+.note{border-left:2px solid var(--border,#c7c7cc);padding-left:16px;margin:16px 0}a{color:inherit;text-underline-offset:3px}
+@media(max-width:520px){.flow{grid-template-columns:1fr 1fr}.workspace{height:300px}.panel{padding:12px}.resize-controls{gap:12px}}
+</style></head><body>
+<p><strong>Workspace tersimpan. Eksekusi menjadi job terpisah.</strong><br><span class="muted caption">Diagram usulan Zkuiz berdasarkan pola LeetCode. Bukan UI final; tidak mengeksekusi circuit.</span></p>
+<div class="workspace" aria-label="Diagram panel workspace">
+<section class="panel"><span class="panel-title">Soal</span><p>Deskripsi, kontrak input, contoh.</p><p class="muted caption">Ukuran dan tab disimpan sebagai preferensi workspace.</p></section>
+<div class="right"><section class="panel"><span class="panel-title">Circuit editor</span><code>out &lt;== a * b;</code><p class="muted caption">Draft dapat berubah tanpa mengubah snapshot job.</p></section>
+<section class="panel"><span class="panel-title">Testcase · Hasil · Log</span><span class="muted caption">Hasil terstruktur dan stdout. Tidak membutuhkan shell interaktif.</span></section></div></div>
+<div class="resize-controls"><label for="columns">Lebar panel soal <output id="columns-value">40%</output><input id="columns" type="range" min="32" max="62" value="40"></label><label for="rows">Tinggi editor <output id="rows-value">62%</output><input id="rows" type="range" min="40" max="70" value="62"></label></div>
+<div class="controls" aria-label="Pilih alur untuk dibaca"><button id="run" type="button" aria-pressed="true">Lihat alur Run</button><button id="submit" type="button" aria-pressed="false">Lihat alur Submit</button></div>
+<ol class="flow" id="flow" aria-live="polite"></ol>
+<p id="mode-note" class="note"></p>
+<p class="muted caption">Teramati: dua arah resize dan persistensi layout. Bundle klien menunjukkan enqueue dan pemeriksaan hasil Run. Eksekusi terautentikasi serta sandbox backend LeetCode belum terverifikasi.</p>
+<p class="caption"><a href="https://support.leetcode.com/hc/en-us/articles/360012016874-Start-your-Coding-Practice" target="_blank" rel="noreferrer">Referensi alur LeetCode</a> · <a href="https://ui.shadcn.com/docs/components/base/resizable" target="_blank" rel="noreferrer">Primitive resizable shadcn</a></p>
+<script>
+const views={
+run:{steps:[["1. Snapshot","Kode + testcase pilihan"],["2. Terima job","Validasi dan antrekan"],["3. Worker","Kompilasi + evaluasi"],["4. Hasil","Input, output, log, diagnostik"]],note:"Run membantu iterasi cepat. Mengedit kode setelah klik tidak mengubah job yang sudah dikirim."},
+submit:{steps:[["1. Snapshot","Kode + versi soal"],["2. Terima job","Validasi dan catat kiriman"],["3. Judge worker","Tes tersembunyi + pemeriksaan circuit"],["4. Record hasil","Verdict, cakupan jaminan, history"]],note:"Submit menilai kiriman menurut kebijakan soal. UNKNOWN atau timeout solver tidak boleh diberi label formally verified."}
+};
+function show(mode){
+const view=views[mode];document.getElementById("flow").replaceChildren(...view.steps.map(([title,description])=>{const li=document.createElement("li"),strong=document.createElement("strong"),span=document.createElement("span");strong.textContent=title;span.textContent=description;li.append(strong,span);return li}));
+document.getElementById("mode-note").textContent=view.note;
+for(const key of ["run","submit"])document.getElementById(key).setAttribute("aria-pressed",String(key===mode));
+}
+document.getElementById("run").addEventListener("click",()=>show("run"));document.getElementById("submit").addEventListener("click",()=>show("submit"));
+for(const [id,variable] of [["columns","--problem-share"],["rows","--editor-share"]])document.getElementById(id).addEventListener("input",event=>{const value=event.target.value+"%";document.documentElement.style.setProperty(variable,value);document.getElementById(id+"-value").textContent=value});
+show("run");
+</script></body></html>

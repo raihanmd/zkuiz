@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-29",
+  "method": "Resize splitters with synthetic mousedown/mousemove/mouseup; navigate to problem URL again; inspect resulting DOM and layout weights.",
+  "before": {
+    "splitters": [
+      {
+        "x": 837,
+        "y": 48
+      },
+      {
+        "x": 845,
+        "y": 606
+      }
+    ],
+    "horizontalWeights": [
+      46.79886685552408,
+      33.20113314447592
+    ],
+    "verticalWeights": [
+      46.83453237410072,
+      23.165467625899282
+    ]
+  },
+  "after": {
+    "horizontalWeights": [
+      46.79886685552408,
+      33.20113314447592
+    ],
+    "selectedTabs": [
+      "Description",
+      "Code",
+      "Test Result"
+    ],
+    "splitters": [
+      {
+        "x": 837,
+        "y": 48
+      },
+      {
+        "x": 845,
+        "y": 606
+      }
+    ],
+    "url": "https://leetcode.com/problems/two-sum/description/",
+    "verticalWeights": [
+      46.83453237410072,
+      23.165467625899282
+    ]
+  },
+  "interpretation": "Both resized splitter positions and selected Test Result tab survived navigation/reload in this guest browser profile. IDs were regenerated; compare component identities and weights, not node IDs."
+}
