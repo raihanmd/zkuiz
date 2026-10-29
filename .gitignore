@@ -1,0 +1,13 @@
+# Dependencies and generated application output.
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Keep Bun's lockfile tracked; credentials remain local.
+.env
+.env.*
+!.env.example
+!.env.*.example
