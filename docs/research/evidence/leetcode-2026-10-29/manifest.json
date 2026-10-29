@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-29",
+  "target": "https://leetcode.com/problems/two-sum/",
+  "nextBuildId": "_9zWZj5Y4K80ReQP2EMJh",
+  "scope": {
+    "loadedSameOriginScriptsScanned": 82,
+    "charactersScanned": 5643085,
+    "queries": [
+      "interpret_solution",
+      "/submissions/detail/",
+      "/submit/",
+      "QD_LAYOUT_JSON",
+      "status_code",
+      "judge_type"
+    ]
+  },
+  "artifacts": [
+    {
+      "url": "https://leetcode.com/_next/static/chunks/pages/problems/%5Bslug%5D/%5B%5B...tab%5D%5D-515ef41b24d950dc.js",
+      "bytes": 740158,
+      "sha256": "c5dc9e46cc9823362223652ce0af921e04df3eb926cc60dbe9c2cab19710fbd3",
+      "retainedAt": "/tmp/zkuiz-rea/leetcode-problem-page.js",
+      "relevantCharacterSpans": [
+        {
+          "start": 530900,
+          "end": 536100,
+          "purpose": "Run payload, enqueue response IDs, bounded result polling, verdict and stdout normalization"
+        },
+        {
+          "start": 127700,
+          "end": 133300,
+          "purpose": "Submit controller, auth guard, immutable current-code payload, pending statuses, Judging tab and history invalidation"
+        }
+      ]
+    },
+    {
+      "url": "https://leetcode.com/_next/static/chunks/pages/_app-e927d51b1021e479.js",
+      "bytes": 381942,
+      "sha256": "2ae6af984e8948cd1e7daab25f14e6a2aaaeb7d1dcc2f741c8c9310bedede0d0",
+      "retainedAt": "/tmp/zkuiz-rea-static/app-e927d51b1021e479.js",
+      "relevantCharacterSpans": [
+        {
+          "start": 291158,
+          "end": 291518,
+          "purpose": "Run enqueue, Submit enqueue and result-check endpoint templates"
+        },
+        {
+          "start": 207187,
+          "end": 207907,
+          "purpose": "Panel component registry and layout persistence keys"
+        }
+      ]
+    },
+    {
+      "url": "https://leetcode.com/_next/static/chunks/58385-af635e9cd8afd720.js",
+      "bytes": 41125,
+      "sha256": "f26049bcd3ed31abde6135db4b29c42bace7ad33f312c589c9edb13d0bda31d3",
+      "retainedAt": "/tmp/zkuiz-rea-static/judge-58385-af635e9cd8afd720.js",
+      "purpose": "Route registry cross-check only; not treated as judge implementation"
+    }
+  ],
+  "limitations": [
+    "Static character spans are zero-based JavaScript string offsets, not byte offsets.",
+    "Loaded client code does not prove all code paths executed.",
+    "Temporary downloaded bundles may expire or disappear. URLs and SHA-256 identify this snapshot; third-party bundles are not copied into the project.",
+    "Guest Run and Submit are auth-gated; no successful code execution or authenticated judge response was observed.",
+    "Execution request hook observed XHR only; a zero count is not exhaustive network evidence.",
+    "No server source, worker infrastructure, queue vendor, sandbox technology, or resource enforcement was observed.",
+    "REA standalone browser was served a Cloudflare challenge; no attempt was made to bypass it.",
+    "REA static-analysis calls did not return within the bounded investigation window and were stopped; no static REA Evidence is claimed."
+  ],
+  "reaBrowserEvidence": {
+    "evidenceId": "ev_8aa1c18b0f6c62ac851d0b9dbc69f3e15e178cd87d7c6636dc3bcb14ec25749e",
+    "provider": {
+      "id": "rea-playwright-browser-scenario",
+      "name": "REA Playwright browser scenario capture provider",
+      "version": "1"
+    },
+    "observation": "Standalone Chromium received a Cloudflare challenge; useful only as coverage limitation."
+  }
+}
