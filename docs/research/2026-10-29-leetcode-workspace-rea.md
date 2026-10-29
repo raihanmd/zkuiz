@@ -2,20 +2,20 @@
 
 Tanggal pemeriksaan: 2026-10-29. Tahap: reverse engineering perilaku dan riset arsitektur, bukan implementasi platform.
 
-## Keputusan pengguna
+## Arah proyek
 
 - LeetCode menjadi referensi utama alur latihan, editor, Run, Submit, dan panel yang dapat digeser atau diubah ukurannya.
 - Identitas visual Zkuiz harus berbeda. Mengikuti pola interaksi tidak berarti menyalin tampilan atau source LeetCode.
 - Stack ditetapkan: Next.js, Bun, shadcn/ui.
 - Komponen harus modular dan dapat dikomposisikan, mengikuti prinsip shadcn.
 
-Detail worker, transport hasil, database, editor, bahasa circuit pertama, dan verifier masih rekomendasi, belum keputusan pengguna.
+Detail worker, transport hasil, database, editor, bahasa circuit pertama, dan verifier belum ditetapkan.
 
 ## Cara investigasi dan batas bukti
 
-Target utama adalah workspace tamu pada https://leetcode.com/problems/two-sum/. Investigasi memakai skill REA, percobaan REA browser capture, DOM/runtime browser T3, pembacaan bundle klien yang benar-benar dimuat halaman, serta dokumentasi resmi LeetCode dan stack.
+Target utama adalah workspace tamu pada https://leetcode.com/problems/two-sum/. Metode pemeriksaan meliputi observasi DOM dan runtime browser, pembacaan bundle klien yang dimuat halaman, serta peninjauan dokumentasi resmi.
 
-Snapshot aksesibilitas T3 dua kali timeout. Browser alternatif dan REA standalone menerima Cloudflare challenge; tidak ada upaya melewatinya. Evaluasi DOM pada tab T3 berhasil membaca halaman LeetCode yang sudah termuat, sehingga observasi interaksi dilanjutkan di sana. Analisis statis REA tidak mengembalikan hasil dalam jendela investigasi dan dihentikan; pembacaan bundle secara langsung dipakai sebagai bukti statis dengan batas yang dinyatakan. Tidak ada klaim bahwa REA menghasilkan graph statis yang lengkap.
+Sebagian percobaan browser terhalang timeout dan Cloudflare challenge. Observasi interaksi dilakukan pada tab yang berhasil memuat halaman. Analisis bundle dilakukan melalui pembacaan langsung; tidak ada graph statis lengkap. Cakupan dan keterbatasan pengambilan bukti dicatat dalam manifest.
 
 Tidak ada login, kredensial, atau submission sukses. Run dan Submit menampilkan pemberitahuan autentikasi. Karena itu, backend LeetCode, sandbox, queue vendor, sistem operasi worker, dan penegakan resource limit tidak terverifikasi.
 
@@ -26,7 +26,7 @@ Artefak bukti lokal:
 - [LC-S01: identitas bundle, hash, cakupan pencarian, dan batas analisis](evidence/leetcode-2026-10-29/manifest.json).
 - [Diagram interaktif alur dan pembagian panel](leetcode-workspace-map.html), sebagai ilustrasi usulan; bukan implementasi aplikasi atau eksekusi circuit.
 
-REA browser Evidence `ev_8aa1c18b0f6c62ac851d0b9dbc69f3e15e178cd87d7c6636dc3bcb14ec25749e` hanya mendukung temuan bahwa browser standalone menerima challenge. Jangan menggunakannya sebagai bukti workspace atau eksekusi kode.
+Catatan browser yang hanya menerima challenge tidak menjadi bukti perilaku workspace atau eksekusi kode.
 
 ## 1. Bentuk playground yang terlihat
 

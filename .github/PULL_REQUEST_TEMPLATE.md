@@ -1,25 +1,11 @@
-## Problem and resulting behavior
+## Summary
 
-<!-- Explain the concrete problem and what this change makes possible. -->
-
-## Scope and review
-
-<!-- State the single purpose, useful review order, and any parent PR/base dependency. -->
-
-## TDD evidence
-
-- Acceptance behavior:
-- Red command and expected failure observed:
-- Green command and result:
-- Refactor check, if applicable:
-
-<!-- For documentation/metadata/purely visual work, explain why executable regression tests are not applicable and name the checks used. -->
+<!-- Explain the problem and what this change does. Link related issues. -->
 
 ## Verification
 
-- Verifier workflow used (`freebuff-verifier` or disclosed manual equivalent):
-- Focused checks and results:
-- Changed UI interaction checked, if applicable:
-- Remaining limits or blockers:
+<!-- List the checks you ran and their results. For behavior changes, include the failing test observed before the fix and the passing result afterward. For documentation, check links, examples, and factual accuracy. -->
 
-<!-- Keep the PR draft when required checks cannot run. Do not mark unrun checks as passing. -->
+## Review notes
+
+<!-- Note dependencies, limitations, or areas that need particular attention. Keep the PR in draft if required checks are blocked. -->
